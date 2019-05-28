@@ -5,22 +5,22 @@ contract Block{
     struct User{
         string User_Name;
         uint User_ID;
-        address User_address;
+        uint Problem_ID;
         uint Accept_Number;
+        uint Result_hash;
+        uint Code_hash;
     }
     //ユーザの情報を引き出す関数
     function research (uint User_ID,string User_Name) private{
-        if(Use_name ){
+        if(uint ,uint U){
              
-        }else if(User_ID ){
-            
+        }else if(uint User_ID ){
+          
         }
     }
     //ユーザの情報を追加する関数
     function add (string User_Name,uint User_ID,)private{
         Accept_Number += msg.value;
-        
-        
     }
     
     
