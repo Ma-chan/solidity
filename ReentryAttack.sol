@@ -1,3 +1,5 @@
+// コントラクトのセキュリティを勉強するためのコントラクト
+// 教科書に載っているコントラクト
 pragma solidity ^0.4.15; // specifies minimum Solidity version to compiler
 
 contract HackableRoulette {
