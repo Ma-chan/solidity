@@ -1,56 +1,43 @@
-pragma solidity ^0.5.16;
-//import "github.com/provable-things/ethereum-api/provableAPI.sol";
+pragma solidity ^0.4.19;
 contract jyanken{
-    //uint Goo=="0";
-        //uint Choki=="1";
-        //uint Par=="2";
-    uint rand=0,rand1=0;
-    address client;
-    address tee;
-    address BC;
-    uint random = uint(keccak256(now,msg.sender,rand))%3;
-    uint random1 = uint(keccak256(now,msg.sender,rand1))%3;
-    enum tee1HandSigns{
-        tee1_HandSigns=random1;
-        rand1++;
-    }
-    enum clientHandSigns{
-        client_HandSigns=random;
-        rand++;
-    }
+    uint random_tee = uint(keccak256(block.blockhash(block.number)))%3;
+    uint random_client = uint(keccak256(block.blockhash(block.number)))%3;
+    address owner;
+    uint public amount;
     
-    struct client{
-        uint256 b;
-    }
+    uint v=10;
     
-    struct tee1{
-        uint256 b;
-    }
-//teeが勝つ場合と負ける場合とアイコの場合、判定不能の例外処理
-//勝つと10得る,負けると10失う
-    function jyanken_judge(HandSigns _handSign,int r,int b) public constant returns(HandSigns){
-        if(_tee1handSign=="0" && _clienthandSign==""){
-            b+=10;
-        }else if(_tee1handSign=="" && _clienthandSign==""){
-            b-=10;
-        }else if(_tee1handSign=="" && _clienthandSign==""){
-            
-        }else if(_tee1handSign=="" && _clienthandSign==""){
-            b+=10;
-        }else if(_tee1handSign=="" && _clienthandSign==""){
-            b-=10;
-        }else if(_tee1handSign=="" && _clienthandSign==""){
-            
-        }else if(_tee1handSign=="" && _clienthandSign==""){
-            b+=10;
-            
-        }else if(_tee1handSign=="" && _clienthandSign==""){
-            b-=10;
-            
-        }else if(_tee1handSign=="" && _clienthandSign==""){
-            
-        }else{
-            return HandSigns.Undefined;
-        }
+    // 0がグー,1がチョキ,2がパー
+    //じゃんけん1回目の結果によって、得た合計ポイントを送信するプログラム
+    
+    if(random_tee == random_client){
+        return 'aiko';
+    }else if(random_tee == 0 && random_client == 1){
+        return 'win';
+        amount += v;
+        msg.sender.send(v);
+    }else if(random_tee == 0 && random_client == 2){
+        return 'lose';
+        amount -= v;
+        msg.sender.send(v);
+    }else if(random_tee == 1 && random_client == 2){
+        return 'win';
+        amount += v;
+        msg.sender.send(v);
+    }else if(random_tee == 1 && random_client == 0){
+        return 'lose';
+        amount -= v;
+        msg.sender.send(v);
+    }else if(random_tee == 2 && random_client == 0){
+        return 'win';
+        amount += v;
+        msg.sender.send(v);
+    }else if(random_tee ==2 && random_client == 1){
+        return 'lose';
+        amount -= v;
+        msg.sender.send(v);
+    }else{
+        return 'error';
+        break;
     }
 }
